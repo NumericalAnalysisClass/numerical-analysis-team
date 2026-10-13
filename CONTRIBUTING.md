@@ -25,9 +25,9 @@ pytest                             # 全部通れば準備完了
 
 担当の割り振りはしません。作りたいものを自由に選んでください。
 
-- 授業に出てくる手法の一覧は、ピン留めした [📋 授業内容チェックリスト（#11）](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/11) にあります。何を作るか迷ったときの目安です。
+- 授業に出てくる手法の一覧は [📋 授業内容チェックリスト](CHECKLIST.md) にあります。何を作るか迷ったときの目安です。
 - 授業の範囲外のテーマも歓迎します（例：[偏微分方程式の差分法 #12](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/12)）。
-- 作り始めるときは Issue を1つ立て、チェックリストの該当行に Issue 番号を書き添えてください。同じものを2人が作るのを防ぐためです。
+- 作り始めるときは、[Issues](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues) で同じテーマがないかを確かめてから、**自分で** Issue を1つ立ててください。同じものを2人が作るのを防ぐためです。
 
 ## 書いて出す流れ
 
