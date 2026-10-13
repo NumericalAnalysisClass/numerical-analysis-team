@@ -21,11 +21,13 @@ pytest                             # 全部通れば準備完了
 
 `pip install -e` で入れると、手元のファイルを書き換えた内容がそのまま `import` に反映されます。
 
-## 担当を決める
+## 作るものを選ぶ
 
-[Issues](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues) にモジュールごとの Issue があります。
-やりたいものを開いて「やります」とコメントし、右側の Assignees に自分を入れてください。
-表にないものを作りたいときは、新しく Issue を立てて相談しましょう。
+担当の割り振りはしません。作りたいものを自由に選んでください。
+
+- 授業に出てくる手法の一覧は、ピン留めした [📋 授業内容チェックリスト（#11）](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/11) にあります。何を作るか迷ったときの目安です。
+- 授業の範囲外のテーマも歓迎します（例：[偏微分方程式の差分法 #12](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/12)）。
+- 作り始めるときは Issue を1つ立て、チェックリストの該当行に Issue 番号を書き添えてください。同じものを2人が作るのを防ぐためです。
 
 ## 書いて出す流れ
 
@@ -52,22 +54,25 @@ push すると表示される URL から Pull Request（PR）を作ります。
 - **1モジュール1ファイル。** 他の人のファイルを触るときは、その人の PR か Issue で相談してから。
 - **反復法は履歴を返す。** `roots.RootResult` のように、結果に `history` を入れます。
 - **実行時の依存は NumPy だけ。** SciPy は答え合わせのためにテストでだけ使ってかまいません。
-- **docstring に授業の何回目か、手法の式、収束の性質を書く。**
+- **docstring に手法の式と収束の性質を書く。** 授業の手法なら何回目かも。
 - **テストは `tests/test_<モジュール名>.py`。** 解析解か SciPy の結果と比べます。
 
-## モジュールの割り当て（シラバス対応案）
+## 置き場所の目安
 
-| 授業回 | モジュール | 内容の例 |
-|---|---|---|
-| 2 | `errors` | 丸め誤差・桁落ち・機械イプシロン |
-| 3 | `basics` | Horner 法、級数の打ち切り |
-| 4・5 | `linalg.direct` | Gauss 消去、LU 分解、Cholesky 分解 |
-| 6・7 | `roots` | 二分法・Newton 法（済）、割線法、はさみうち法 |
-| 8・9 | `linalg.iterative` | Jacobi 法、Gauss-Seidel 法、SOR 法、共役勾配法 |
-| 10 | `interpolate` | Lagrange 補間、Newton 補間、スプライン |
-| 11 | `integrate` | 台形則、Simpson 則、Gauss 求積 |
-| 12・13 | `ode` | Euler 法、Runge-Kutta 法 |
-| 14 | `eigen` | べき乗法、QR 法 |
+授業の回ごとにモジュールを分けています。新しいテーマは、Issue で相談して名前を決めてください。
+
+| 授業回 | モジュール |
+|---|---|
+| 2 | `errors` |
+| 3 | `basics` |
+| 4・5 | `linalg.direct` |
+| 6・7 | `roots` |
+| 8・9 | `linalg.iterative` |
+| 10 | `interpolate` |
+| 11 | `integrate` |
+| 12・13 | `ode` |
+| 14 | `eigen` |
+| 自由テーマ | `pde` など |
 
 ## リリース（管理者）
 
