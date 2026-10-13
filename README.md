@@ -29,7 +29,7 @@ from numerical_analysis_team import ...     # ← ここにあなたのモジュ
 
 ## テーマ例
 
-授業の回に沿った例です。ここにないテーマでもかまいません。手法の細かい一覧は [📋 授業内容チェックリスト #11](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/11) にあります。
+授業の回に沿った例です。ここにないテーマでもかまいません。手法の細かい一覧は [📋 授業内容チェックリスト](CHECKLIST.md) にあります。
 
 | テーマ例 | モジュール名の例 | 主に使う授業回 |
 |---|---|---|
@@ -86,11 +86,12 @@ from numerical_analysis_team import ...     # ← ここにあなたのモジュ
 
 ### 4. 作るものを決めて、Issue を立てる
 
-1. [テーマ例](#テーマ例) と [チェックリスト #11](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/11) を見て、作りたいものを決める
-2. このリポジトリの上にある **Issues** → **New issue** を押す
-3. タイトルに `integrate: 台形則と Simpson 則` のように「モジュール名: 作るもの」を書いて **Create** を押す
+1. [テーマ例](#テーマ例) と [チェックリスト](CHECKLIST.md) を見て、作りたいものを決める
+2. このリポジトリの上にある **Issues** を開き、同じテーマの Issue がないかを確かめる
+3. **New issue** を押す
+4. タイトルに `integrate: 台形則と Simpson 則` のように「モジュール名: 作るもの」を書いて **Create** を押す
 
-これで、ほかの人と同じものを作ってしまうのを防げます。以下では、例として `integrate`（数値積分）を作る流れを説明します。
+Issue は自分で立てます。ほかの人と同じものを作ってしまうのを防ぐためと、自分の作業の記録になるためです。以下では、例として `integrate`（数値積分）を作る流れを説明します。
 
 ### 5. GitHub の画面でモジュールのファイルを作る
 
