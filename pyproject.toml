@@ -18,10 +18,10 @@ classifiers = [
   "Intended Audience :: Education",
   "Topic :: Scientific/Engineering :: Mathematics",
 ]
-dependencies = []
+dependencies = ["numpy"]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "scipy"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/numerical_analysis_team"]
