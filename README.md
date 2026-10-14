@@ -45,7 +45,7 @@ from numerical_analysis_team import ...     # ← ここにあなたのモジュ
 
 ### 企画者のテーマ：1次元偏微分方程式ソルバー
 
-拡散方程式から始めて、非線形項、分散項と1つずつ足していきます。詳しくは [#12](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/12)。
+拡散方程式から始めて、非線形項、分散項と1つずつ足していきます。詳しくは [#1](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues/1)。
 
 | | 拡散方程式 | 粘性 Burgers 方程式 | KdV 方程式（発展） |
 |---|---|---|---|
