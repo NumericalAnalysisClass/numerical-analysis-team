@@ -5,7 +5,7 @@
 ## はじめての人へ（最初の1回だけ）
 
 1. GitHub のアカウントを作る：https://github.com/signup
-2. 作ったアカウント名（ユーザー名）を管理者に伝える
+2. このアカウントを一時的にフォローする。
 3. 届いた招待メールから `NumericalAnalysisClass` に参加する
    （メールが見つからなければ https://github.com/orgs/NumericalAnalysisClass/invitation を開く）
 4. 手元に持ってくる
@@ -24,8 +24,7 @@ pytest                             # 全部通れば準備完了
 ## 担当を決める
 
 [Issues](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues) にモジュールごとの Issue があります。
-やりたいものを開いて「やります」とコメントし、右側の Assignees に自分を入れてください。
-表にないものを作りたいときは、新しく Issue を立てて相談しましょう。
+新しく Issue を立てて相談しましょう。やりたいことが被るなら協力もしましょう。
 
 ## 書いて出す流れ
 
