@@ -1,13 +1,13 @@
 ## 何をしたか
 
-<!-- 例：linalg.direct に Gauss 消去法（部分ピボット付き）を追加 -->
+<!-- 例：linalg_direct に Gauss 消去法（部分ピボット付き）を追加 -->
 
-Closes #
+Closes #<!-- Issue の番号 -->
 
 ## チェック
 
-- [ ] 授業の何回目に対応するか docstring に書いた
+- [ ] ファイルの先頭に手法と授業の回、docstring に式と収束の性質を書いた
 - [ ] 反復法なら結果に履歴（history）を入れた
 - [ ] 実行時の依存は NumPy だけ（SciPy はテストでだけ使う）
-- [ ] `tests/test_<モジュール名>.py` にテストを足し、手元で `pytest` が通った
-- [ ] README の収録状況の表を更新した
+- [ ] `tests/test_<モジュール名>.py` にテストを足し、Colab か手元で `pytest` が通った
+- [ ] 自分のファイル以外（`__init__.py`・`pyproject.toml`・ほかの人のファイル）は変えていない

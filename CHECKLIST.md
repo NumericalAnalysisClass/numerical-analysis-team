@@ -14,7 +14,7 @@
 - Taylor 級数の打ち切りと誤差
 - Kahan の補正付き総和
 
-## 第4・5回 連立一次方程式（直接法） — `linalg.direct`
+## 第4・5回 連立一次方程式（直接法） — `linalg_direct`
 - Gauss 消去法（部分ピボット付き）
 - 前進代入・後退代入
 - LU 分解
@@ -29,7 +29,7 @@
 - 不動点反復
 - 多変数の Newton 法
 
-## 第8・9回 連立一次方程式（反復法） — `linalg.iterative`
+## 第8・9回 連立一次方程式（反復法） — `linalg_iterative`
 - Jacobi 法
 - Gauss-Seidel 法
 - SOR 法

@@ -1,78 +1,44 @@
 # 参加のしかた
 
-授業（数値解析、全14回）のグループで、モジュールを1人1つずつ分担して書きます。
+授業（数値解析）のグループで、1人1つずつモジュールを書いて、1つのライブラリにまとめます。
 
-## はじめての人へ（最初の1回だけ）
+**手順は [📘 開発マニュアル](docs/MANUAL.md) にすべて書いてあります。** GitHub のアカウント作成から、Colab で `pip install` して使えるようになるまでを、画面の操作から説明しています。ここには、書くときの約束だけをまとめます。
 
-1. GitHub のアカウントを作る：https://github.com/signup
-2. このアカウントを一時的にフォローする。
-3. 届いた招待メールから `NumericalAnalysisClass` に参加する
-   （メールが見つからなければ https://github.com/orgs/NumericalAnalysisClass/invitation を開く）
-4. 手元に持ってくる
+## 流れ（要約）
 
-```
-git clone https://github.com/NumericalAnalysisClass/numerical-analysis-team.git
-cd numerical-analysis-team
-python -m venv .venv
-source .venv/bin/activate          # Windows は .venv\Scripts\activate
-pip install -e ".[dev]"
-pytest                             # 全部通れば準備完了
-```
+1. https://github.com/testjikuji をフォローし、届いた招待を承認する
+2. [Issues](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues) で同じテーマがないかを確かめて、**自分で** Issue を立てる（タイトルは「モジュール名: 作るもの」）
+3. `main` から `feat/<モジュール名>` のブランチを作り、モジュールとテストを書く
+4. Pull Request を出す。自動テスト（Python 3.10〜3.13）が4つとも通れば、**自分でマージできます**（承認は必須ではありません。レビューを頼むのは歓迎）
+5. マージしたら、すぐ Colab で使えます
 
-`pip install -e` で入れると、手元のファイルを書き換えた内容がそのまま `import` に反映されます。
+   ```python
+   !pip install -q --force-reinstall --no-deps git+https://github.com/NumericalAnalysisClass/numerical-analysis-team
+   ```
 
-## 担当を決める
-
-[Issues](https://github.com/NumericalAnalysisClass/numerical-analysis-team/issues) にモジュールごとの Issue があります。
-新しく Issue を立てて相談しましょう。やりたいことが被るなら協力もしましょう。
-
-## 書いて出す流れ
-
-```
-git switch main
-git pull
-git switch -c feat/linalg-direct           # ブランチ名は feat/<モジュール名>
-# 書く・テストする
-git add src/numerical_analysis_team/linalg/direct.py tests/test_linalg_direct.py
-git commit -m "linalg.direct: Gauss 消去法を追加"
-git push -u origin feat/linalg-direct
-```
-
-push すると表示される URL から Pull Request（PR）を作ります。
-
-- 自動テスト（GitHub Actions）が通ること
-- 他のメンバー1人以上が Approve すること
-
-この2つがそろうと main に merge できます。main に直接 push はできません。
+`main` には直接 push できません。必ず Pull Request を通します。
 
 ## 書き方の約束
 
 - **教科書どおりに素直に書く。** 速さより読みやすさを優先します。
-- **1モジュール1ファイル。** 他の人のファイルを触るときは、その人の PR か Issue で相談してから。
-- **反復法は履歴を返す。** `roots.RootResult` のように、結果に `history` を入れます。
-- **実行時の依存は NumPy だけ。** SciPy は答え合わせのためにテストでだけ使ってかまいません。
-- **docstring に授業の何回目か、手法の式、収束の性質を書く。**
-- **テストは `tests/test_<モジュール名>.py`。** 解析解か SciPy の結果と比べます。
+- **1モジュール1ファイル。** `src/numerical_analysis_team/<モジュール名>.py`。モジュール名は英小文字とアンダースコアだけ（例：`integrate`、`linalg_direct`）。
+- **自分のファイル以外は触らない。** `__init__.py`・`pyproject.toml`・ほかの人のファイルを変えたいときは、Issue で相談してから。`__init__.py` に足さなくても `from numerical_analysis_team import <モジュール名>` で使えます。
+- **ファイルの先頭に手法の名前と授業の回、関数の docstring に式と収束の性質を書く。**
+- **反復法は履歴を返す。** `roots.RootResult` のように、結果に `history`（各反復の近似値）を入れます。
+- **実行時に使えるのは Python 標準と NumPy だけ。** SciPy は答え合わせのためにテストでだけ使えます。
+- **テストは `tests/test_<モジュール名>.py`。** 「厳密解と合うか」「収束の速さが理論どおりか」「おかしな入力でエラーになるか」を確かめます。
 
-## モジュールの割り当て（シラバス対応案）
+## リリース（企画者）
 
-| 授業回 | モジュール | 内容の例 |
-|---|---|---|
-| 2 | `errors` | 丸め誤差・桁落ち・機械イプシロン |
-| 3 | `basics` | Horner 法、級数の打ち切り |
-| 4・5 | `linalg.direct` | Gauss 消去、LU 分解、Cholesky 分解 |
-| 6・7 | `roots` | 二分法・Newton 法（済）、割線法、はさみうち法 |
-| 8・9 | `linalg.iterative` | Jacobi 法、Gauss-Seidel 法、SOR 法、共役勾配法 |
-| 10 | `interpolate` | Lagrange 補間、Newton 補間、スプライン |
-| 11 | `integrate` | 台形則、Simpson 則、Gauss 求積 |
-| 12・13 | `ode` | Euler 法、Runge-Kutta 法 |
-| 14 | `eigen` | べき乗法、QR 法 |
+PyPI への公開は、`publishers` チームのメンバーだけができます。
 
-## リリース（管理者）
-
-`pyproject.toml` の `version` を上げて main に merge したあと、同じ番号のタグを push すると PyPI に公開されます。
+1. `pyproject.toml` の `version` と `src/numerical_analysis_team/__init__.py` の `__version__` を上げる PR をマージする
+2. 同じ番号のタグを打って push する
 
 ```
+git switch main && git pull
 git tag v0.1.0
 git push origin v0.1.0
 ```
+
+GitHub Actions がテスト・ビルドのあと PyPI に公開します。`v` で始まるタグは `publishers` 以外には作れません。
