@@ -2,7 +2,7 @@
 
 GitHub のアカウントを作るところから、自分の書いたコードを Google Colab で `pip install` して使えるようになるところまで、この1本で説明します。
 
-**パソコンに Python や Git を入れる必要はありません。** GitHub の画面でコードを書き、Google Colab で動かします。手元の Git を使いたい人は [付録 A](#付録-a手元の-git-で同じことをする) を見てください。
+**パソコンに Python や Git を入れる必要はありません。** GitHub の画面でコードを書き、Google Colab で動かします。手元の Git と VS Code を使いたい人は [VS Code で開発する](VSCODE.md) を見てください。
 
 ---
 
