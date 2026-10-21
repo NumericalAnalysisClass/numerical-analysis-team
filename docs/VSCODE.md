@@ -51,9 +51,17 @@ git config --global user.email "12345678+ユーザー名@users.noreply.github.co
 
 ## 4. clone して VS Code で開く
 
-1. VS Code で `Cmd+Shift+P`（Windows は `Ctrl+Shift+P`）を押し、`Git: Clone` を選ぶ
-2. URL に `https://github.com/NumericalAnalysisClass/numerical-analysis-team.git` を入れる
-3. 保存先のフォルダを選ぶ（例：書類フォルダ）
+clone に使う URL は次のものです（右上のボタンでコピーできます）。
+
+```
+https://github.com/NumericalAnalysisClass/numerical-analysis-team.git
+```
+
+この URL は、[リポジトリのページ](https://github.com/NumericalAnalysisClass/numerical-analysis-team) の緑の **<> Code** ボタン → **HTTPS** タブでも確かめられます。
+
+1. VS Code で `Cmd+Shift+P`（Windows は `Ctrl+Shift+P`）を押し、`Git: Clone` と打って選ぶ
+2. 入力欄に上の URL を貼り付けて Enter を押す
+3. 保存先を選ぶ（例：書類フォルダ）。選んだ場所の中に `numerical-analysis-team` フォルダが作られます
 4. 「開きますか？」と聞かれたら **開く** を押す
 
 途中で **GitHub にサインイン** を求められたら、ブラウザで許可します。これで、VS Code から（VS Code の中のターミナルからも）push できるようになります。
