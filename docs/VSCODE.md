@@ -78,6 +78,12 @@ flowchart LR
 
 [開発マニュアルの手順 1・2](MANUAL.md#1-github-のアカウントを作る) のとおり、アカウントを作り、グループ `NumericalAnalysisClass` の招待を承認してください。承認しないと push できません。
 
+招待は、GitHub にログインした状態で次のページを開くと承認できます。**Join NumericalAnalysisClass** を押してください。
+
+**https://github.com/orgs/NumericalAnalysisClass/invitation**
+
+招待メールのボタンや、GitHub 右上の通知（🔔）からも同じ画面に行けます。招待は送られてから 7 日で切れます。ページを開いても「招待が見つからない」と出たときは、管理者に送り直してもらってください。
+
 ## 2. Git・Python・VS Code を入れる
 
 | もの | Mac | Windows |
@@ -237,7 +243,23 @@ git push -u origin feat/integrate      # 2回目からは git push だけ
 1. `git status`：変えたファイル・新しく作ったファイルの一覧を見る
 2. `git add ファイル名`：次のコミットに入れるファイルを選ぶ（「ステージ」に載せる）
 3. `git commit -m "メッセージ"`：選んだファイルの変更を、メッセージ付きで手元に記録する（セーブポイント）
-4. `git push -u origin ブランチ名`：手元のコミットを GitHub に送る。`origin` は GitHub のリポジトリのこと。`-u` は「このブランチは GitHub のこのブランチとつながっている」と覚えさせる指定で、2回目からは `git push` だけで済むようになる
+4. `git push -u origin ブランチ名`：手元のコミットを GitHub に送る。`-u` は「このブランチは GitHub のこのブランチとつながっている」と覚えさせる指定で、2回目からは `git push` だけで済むようになる
+
+`origin` はブランチの名前ではありません。**送り先の GitHub のリポジトリ**につけられたあだ名です。
+
+```
+git push -u origin feat/integrate
+            ~~~~~~ ~~~~~~~~~~~~~~
+            送り先  送るブランチ
+          （GitHub）
+```
+
+- `origin`：`git clone` したときに、clone 元の URL（`https://github.com/NumericalAnalysisClass/numerical-analysis-team.git`）に自動でつく名前です。`git remote -v` で確かめられます
+- 後ろのブランチ名：どのブランチを送るかです。`main` も、いくつもあるブランチの1つにすぎません（このリポジトリでは `main` に直接 push しません）
+
+宛先の住所が `origin`、送る荷物がブランチ、と考えると分かりやすいです。
+
+ブランチ名は、`git switch -c` で作ったときの名前と一字一句同じにしてください。`feat.integrate`（ドット）と `feat/integrate`（スラッシュ）は別の名前です。ブランチ名には `/` を使います。手元にない名前を push しようとすると `error: src refspec ... does not match any` と出ます。今いるブランチの名前は `git branch --show-current` で確かめられます。
 
 `git add .` でまとめて足さず、ファイルを選んでください。メモやノートブックがうっかり公開されるのを防ぐためです。
 
@@ -300,6 +322,7 @@ git branch -d feat/integrate
 | `ModuleNotFoundError: No module named 'numerical_analysis_team'` | 仮想環境に入っていません。`activate` の行を実行し、VS Code では `Python: Select Interpreter` で `.venv` を選びます |
 | VS Code のエディタで `import` に波線が出る | 同上（インタープリターが `.venv` になっていない） |
 | `main` でコミットしてしまった（push 前） | `git switch -c feat/モジュール名` でそのままブランチにします。続けて `git branch -f main origin/main` で `main` を元に戻します |
+| push で `error: src refspec ... does not match any` | push したブランチ名が、手元のブランチ名と違います。`git branch --show-current` で今の名前を確かめ、その名前で `git push -u origin 名前` します（ドット `.` とスラッシュ `/` の違いに注意） |
 | PR に「This branch has conflicts」 | `git switch main && git pull && git switch feat/モジュール名 && git merge main` を実行します。VS Code が食い違う箇所を色分けで出すので、残したいほうを選び、保存してコミット → push します |
 | コミットのメールアドレスを間違えた（push 前） | 手順 3 で設定し直してから `git commit --amend --reset-author --no-edit` を実行します |
 
