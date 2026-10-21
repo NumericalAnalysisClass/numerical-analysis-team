@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "numerical-analysis-team"
-version = "0.0.2"
+version = "0.1.0"
 description = "Textbook numerical analysis methods for a university course, with iteration histories for study"
 readme = "README.md"
 requires-python = ">=3.10"
