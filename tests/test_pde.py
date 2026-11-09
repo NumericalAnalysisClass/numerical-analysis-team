@@ -79,3 +79,50 @@ def test_heat_steady_state_linear():
         pde.heat_crank_nicolson(zero, T=2.0, nx=20, nt=200, left=1.0, right=3.0),
     ):
         assert res.u[-1] == pytest.approx(1 + 2 * res.x, abs=1e-6)
+
+
+# ---- 2次元：ADI 法 ----
+
+
+def sin_sin(X, Y):
+    return np.sin(np.pi * X) * np.sin(np.pi * Y)
+
+
+def max_error_2d(res, alpha=1.0, Lx=1.0, Ly=1.0):
+    exact = pde.heat2d_exact(res.x, res.y, res.t[-1], alpha, Lx, Ly)
+    return np.max(np.abs(res.u[-1] - exact))
+
+
+def test_heat2d_adi_shape_and_exact():
+    res = pde.heat2d_adi(sin_sin, nx=20, ny=30, nt=40)
+    assert res.u.shape == (41, 21, 31)
+    assert max_error_2d(res) < 1e-3
+
+
+def test_heat2d_adi_second_order():
+    # dt, dx, dy を同時に半分にすると、誤差 O(dt² + dx² + dy²) はおよそ 1/4
+    e1 = max_error_2d(pde.heat2d_adi(sin_sin, nx=16, ny=16, nt=16))
+    e2 = max_error_2d(pde.heat2d_adi(sin_sin, nx=32, ny=32, nt=32))
+    assert e1 / e2 == pytest.approx(4, rel=0.05)
+
+
+def test_heat2d_adi_rectangle():
+    # 長方形・別のモード・alpha ≠ 1 でも厳密解に合う
+    f = lambda X, Y: np.sin(np.pi * X / 2) * np.sin(2 * np.pi * Y)
+    res = pde.heat2d_adi(f, alpha=0.5, Lx=2.0, Ly=1.0, T=0.05, nx=40, ny=20, nt=50)
+    exact = pde.heat2d_exact(res.x, res.y, 0.05, 0.5, 2.0, 1.0, kx=1, ky=2)
+    assert np.max(np.abs(res.u[-1] - exact)) < 1e-2
+
+
+def test_heat2d_adi_large_r_stable():
+    # rx = ry = 0.1 / 5 * 30² = 18 でも発散しない
+    res = pde.heat2d_adi(sin_sin, nx=30, ny=30, nt=5)
+    assert max_error_2d(res) < 2e-2
+
+
+def test_heat2d_adi_steady_state():
+    # 境界 g = 1 + x + 2y（調和関数）なら、十分時間がたつと u = g に近づく
+    g = lambda X, Y: 1 + X + 2 * Y
+    res = pde.heat2d_adi(lambda X, Y: np.zeros_like(X), T=2.0, nx=12, ny=12, nt=200, g=g)
+    X, Y = np.meshgrid(res.x, res.y, indexing="ij")
+    assert res.u[-1] == pytest.approx(g(X, Y), abs=1e-6)
